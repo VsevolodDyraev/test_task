@@ -10,15 +10,25 @@ class inaccurate_search
 	int len_search; //длинна слова
 	int index_w;	//индекс, по которому мы ходим по слову
 	bool err_w;		//ошибка разных символов
+
 	
+	char** words;
+	int i_w;
+	
+	
+	unsigned long int cardinality;
+	const int number_characters = 100;
+	unsigned int right_index;
 
 public:
-	inaccurate_search();				//создание объекта
-	inaccurate_search(const char*);		//создание объекта со объекта с искомым словом
+	//inaccurate_search();				//создание объекта
+	inaccurate_search(const char*,unsigned long int);		//создание объекта со объекта с искомым словом
 	~inaccurate_search();				//деструктор
-	char* w_verification(char*);	//основной алгоритм
+	void w_verification();		//основной алгоритм
 	char* return_word();				//возвращение слова, по которуму ищут 
-	void change_word(const char* ch);	//смена слова
+	void change_word(const char*);		//смена слова
+	bool download(const char*);	
+	void display_w();
 };
 
 
