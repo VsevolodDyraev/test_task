@@ -5,17 +5,18 @@
 #include<Windows.h>
 #include<string>
 #include"inaccurate_search.h"
-
+#include<thread>
 
 using namespace std;
 
 int main()
 {
-	
+	/*auto ch_tmp = chrono::high_resolution_clock::now();
+	chrono::duration<float> all_time =  ch_tmp;*/
+
 	char y;
 	string name_file;
 	const int MAX_SIZE_WORD = 100;
-	unsigned long long int all_time = 0;
 
 
 	char* buff = new char[MAX_SIZE_WORD];
@@ -25,8 +26,8 @@ int main()
 
 	ifstream fin;
 
-	int start_time;
-	int end_time;
+	float all_time = 0.0f;
+
 	char* hell = new char[MAX_SIZE_WORD];
 	//inaccurate_search search_w(hell,in);
 
@@ -91,25 +92,25 @@ int main()
 
 			cout << "File loaded!\n";
 
-			start_time = clock();//---------------------------------------------------------------
+			auto start = chrono::high_resolution_clock::now();//---------------------------------------------------------------
 			search_w.w_verification();
-			end_time = clock();	//----------------------------------------------------------------
+			auto end = chrono::high_resolution_clock::now();	//----------------------------------------------------------------
 
+			chrono::duration<float> duration = end-start;
 
-
-			cout << time << " time: " << end_time - start_time << " mlsec\n";
-			all_time += end_time - start_time;
+			cout << time << " time: " << duration.count() << " sec\n";
+			all_time += duration.count();
 			time++;
 			search_w.display_w();
 			search_w.i_w_is_zero();
 
 		} while (!ne_overfl);
 		tmp = NULL;
-		cout << "all time: " << all_time << " mlsec\n";
+		cout << "all time: " << all_time << " sec\n";
 		fin.close();
 
 
-		all_time = 0;
+		//all_time = 0;
 
 		cout << endl << "would you like to continue? (y/...)";
 		y = getchar();
