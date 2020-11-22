@@ -11,9 +11,7 @@ using namespace std;
 
 int main()
 {
-	//Извините, что не смог ускорить в 500 раз, но по моим подсчетам я ускорил ~200р
-	//-----------------------------------------------------------------
-
+	
 	char y;
 	string name_file;
 	const int MAX_SIZE_WORD = 100;
@@ -46,7 +44,7 @@ int main()
 		if (!fin.is_open())
 		{
 			cout << "ERROR: file not open!\nwould you like to continue ? (y / ...)";
-			y = _getch();
+			y = getchar();
 			if (y != 'y' && y != 'Y')
 			{
 				system("cls");
@@ -114,7 +112,7 @@ int main()
 		all_time = 0;
 
 		cout << endl << "would you like to continue? (y/...)";
-		y = _getch();
+		y = getchar();
 		cout << endl;
 		if (y != 'y' && y != 'Y')
 		{
@@ -127,7 +125,7 @@ int main()
 
 
 
-	_getch();
+	getchar();
 	return 0;
 }
 

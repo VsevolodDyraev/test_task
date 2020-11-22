@@ -4,26 +4,7 @@
 
 using namespace std;
 
-//inaccurate_search::inaccurate_search() :index_w(0), err_w(false)
-//{
-//	
-//
-//	null_ch = new char;
-//	*null_ch = '\0';
-//	len_search = 2;
-//	w_search = new char[2];
-//	for (int i = 0; i < 2; i++)
-//	{
-//		w_search[i] = ' ';
-//	}
-//	
-//	//words = new char* [cardinality];
-//	//char* temp = new char[cardinality * number_characters];
-//	//for (int i = 0; i < cardinality; i++)
-//	//{
-//	//	words[i] = temp + i * number_characters;
-//	//}
-//}
+
 
 void inaccurate_search::change_word(const char* ch)
 {
@@ -32,7 +13,7 @@ void inaccurate_search::change_word(const char* ch)
 		delete[]w_search;
 		len_search = strlen(ch);
 		w_search = new char[len_search + 1];
-		strcpy_s(w_search, sizeof(char) * len_search + 1, ch);
+		strcpy(w_search, ch);
 	}
 }
 
@@ -46,7 +27,7 @@ inaccurate_search::inaccurate_search(const char* ch, unsigned long int inc) :ind
 	len_search = strlen(ch);
 
 	w_search = new char[len_search + 1];
-	strcpy_s(w_search, sizeof(char) * len_search + 1, ch);
+	strcpy(w_search, ch);
 
 	i_w = 0;
 	words = new char* [cardinality];
