@@ -1,3 +1,4 @@
+
 #pragma once
 #include<string>
 
@@ -11,24 +12,28 @@ class inaccurate_search
 	int index_w;	//индекс, по которому мы ходим по слову
 	bool err_w;		//ошибка разных символов
 
-	
+
 	char** words;
 	int i_w;
-	
-	
+
+
 	unsigned long int cardinality;
 	const int number_characters = 100;
 	unsigned int right_index;
 
 public:
 	//inaccurate_search();				//создание объекта
-	inaccurate_search(const char*,unsigned long int);		//создание объекта со объекта с искомым словом
+	inaccurate_search(const char*, unsigned long int);		//создание объекта со объекта с искомым словом
 	~inaccurate_search();				//деструктор
 	void w_verification();		//основной алгоритм
 	char* return_word();				//возвращение слова, по которуму ищут 
 	void change_word(const char*);		//смена слова
-	bool download(const char*);	
+	bool download(const char*);
 	void display_w();
+	void i_w_is_zero()
+	{
+		i_w = 0;
+	}
 };
 
 

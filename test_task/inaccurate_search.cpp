@@ -37,14 +37,14 @@ void inaccurate_search::change_word(const char* ch)
 }
 
 //создание объекта со объекта с искомым словом
-inaccurate_search::inaccurate_search(const char* ch,unsigned long int inc) :index_w(0), err_w(false),cardinality(inc),right_index(0)
+inaccurate_search::inaccurate_search(const char* ch, unsigned long int inc) :index_w(0), err_w(false), cardinality(inc), right_index(0)
 {
 	//cardinality = 
 
 	null_ch = new char[1];
 	null_ch[0] = '\0';
 	len_search = strlen(ch);
-	
+
 	w_search = new char[len_search + 1];
 	strcpy_s(w_search, sizeof(char) * len_search + 1, ch);
 
@@ -60,7 +60,7 @@ inaccurate_search::inaccurate_search(const char* ch,unsigned long int inc) :inde
 		for (int j = 0; j < number_characters; j++)
 			words[i][j] = '\0';
 
-	
+
 
 }
 
@@ -85,7 +85,7 @@ void inaccurate_search::w_verification()
 	bool return_f = false;
 	unsigned int write_index = 0;
 
-	for (int j = 0; j < cardinality; j++)
+	for (int j = 0; j < i_w; j++)
 	{
 		index_w = 0;
 		return_f = false;
@@ -100,7 +100,7 @@ void inaccurate_search::w_verification()
 				if (words[j][i] != w_search[index_w])
 				{
 					if (/*words[j][i] != w_search[++index_w] ||*/ err_w)
-					{	
+					{
 						return_f = true;
 						break;
 					}
@@ -113,12 +113,12 @@ void inaccurate_search::w_verification()
 			}
 			if (return_f == false)
 			{
-				for (int i = 0; i < len_search-1; i++)
+				for (int i = 0; i < len_search - 1; i++)
 				{
 					words[write_index][i] = words[j][i + 1];
 				}
-				words[write_index][len_search-1] = '\0';
-					//strcpy_s(words[write_index], 100, words[j]);
+				words[write_index][len_search - 1] = '\0';
+				//strcpy_s(words[write_index], 100, words[j]);
 				write_index++;
 				break;
 			}
@@ -126,7 +126,7 @@ void inaccurate_search::w_verification()
 		}
 		case 's':
 		{
-			for (int i = 1; i < len_search+2; i++)
+			for (int i = 1; i < len_search + 2; i++)
 			{
 				if (words[j][i] != w_search[index_w])
 				{
@@ -165,7 +165,7 @@ void inaccurate_search::w_verification()
 		}
 		case 't':
 		{
-			for (int i = 1; i < len_search+1; i++)
+			for (int i = 1; i < len_search + 1; i++)
 			{
 				if (words[j][i] != w_search[index_w])
 				{
@@ -226,7 +226,7 @@ bool inaccurate_search::download(const char* ch)
 
 	switch (len_search - len_ch)
 	{
-	case 1: 
+	case 1:
 	{
 		words[i_w][0] = 'f';
 		while (ch[i])
@@ -235,7 +235,7 @@ bool inaccurate_search::download(const char* ch)
 			i++;
 		}
 		i_w++;
-		if (i_w < cardinality-1)
+		if (i_w < cardinality - 1)
 			return true;
 		return false;
 	}
@@ -281,7 +281,7 @@ void inaccurate_search::display_w()
 	for (int i = 0; i < cardinality; i++)
 	{
 		if (words[i][0])
-			fout << words[i]<<"; ";
+			fout << words[i] << "; ";
 		else
 			break;
 	}
